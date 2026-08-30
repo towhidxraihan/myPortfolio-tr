@@ -18,7 +18,7 @@ const Projects = () => {
             My Projects
           </h2>
           <h3 className="text-3xl md:text-10xl font-semibold text-text-main tracking-tight">
-            Still under development. Check back later for real projects and updates!
+            Still under development. Check back later for all project links and source code updates!
           </h3>
         </motion.div>
 
