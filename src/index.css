@@ -1,0 +1,32 @@
+
+/* Importing geometric style font for a modern */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Typography */
+  --font-sans: 'Inter', sans-serif;
+
+  /* Core Color Palette */
+  --color-base-bg: #050505;       /* Deepest black for spatial depth */
+  --color-surface: #121212;       /* Slightly elevated surfaces */
+  --color-surface-hover: #1f1f1f;
+  --color-text-main: #f5f5f5;     /* Crisp off-white for high readability */
+  --color-text-muted: #a3a3a3;    /* Secondary text */
+  --color-accent: #ffffff;        /* Pure white for strict highlights */
+}
+
+/* Global resets for smooth behavior */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-base-bg);
+    color: var(--color-text-main);
+  }
+  
+  body {
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}

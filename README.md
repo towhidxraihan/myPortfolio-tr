@@ -1,34 +1,73 @@
-# myPortfolio
-# Towhid Raihan | 3D Developer Portfolio
+# React + TypeScript + Vite
 
-![Portfolio Preview](./public/portfolio-preview.png)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-> **Live Demo:** ..........
+Currently, two official plugins are available:
 
-A highly interactive, performance-optimized personal portfolio built to showcase my transition into full-stack software engineering and AI. The application features scroll-driven 3D geometries, glassmorphism UI design, and seamless crossfade animations to create an immersive storytelling experience.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## ✨ Key Features
+## React Compiler
 
-* **Evolving 3D Journey:** A custom scroll-linked WebGL scene that physically morphs as you scroll through my timeline. It transitions from an organic ring (Bangladesh) to a complex Torus Knot (Italy), and finally crystallizes into a structured Icosahedron (United Kingdom) to represent my evolution into software engineering.
-* **Serverless Contact Architecture:** A fully functional, secure contact form powered by EmailJS, allowing direct messaging without a backend database.
-* **Interactive WebGL Backgrounds:** Floating, physics-based 3D geometries and data-network symbols built with React Three Fiber, utilizing `useMemo` for strict state-management and performance optimization.
-* **Cinematic Scroll Animations:** Smooth viewport reveals and layout transitions powered by Framer Motion.
-* **Modern UI/UX:** Responsive, mobile-first design utilizing Tailwind CSS for sleek glassmorphism effects (`backdrop-blur`) and strict typography.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 🛠️ Tech Stack
+## Expanding the ESLint configuration
 
-* **Core:** React 18, TypeScript, Vite
-* **Styling:** Tailwind CSS
-* **Animations:** Framer Motion
-* **3D Engine:** Three.js, React Three Fiber, React Three Drei
-* **Integrations:** EmailJS
-* **Deployment:** [Vercel]
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## 🚀 Running Locally
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-To run this project on your local machine, follow these steps:
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-**1. Clone the repository**
-```bash
-git clone [https://github.com/towhidraihan/your-repo-name.git](https://github.com/towhidxraihan/myPortfolio-tr)
-cd myPortfolio-tr
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
