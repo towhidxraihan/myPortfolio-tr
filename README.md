@@ -30,5 +30,5 @@ To run this project on your local machine, follow these steps:
 
 **1. Clone the repository**
 ```bash
-git clone [https://github.com/towhidraihan/your-repo-name.git](https://github.com/towhidraihan/...)
+git clone [https://github.com/towhidraihan/your-repo-name.git](https://github.com/towhidxraihan/myPortfolio-tr)
 cd myPortfolio-tr
